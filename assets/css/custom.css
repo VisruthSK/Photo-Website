@@ -11,6 +11,9 @@
   --border-dark: #606060;
 } */
 
+:root {
+  --surface-1-dark: #181a20;
+}
 
 /* Set maximum width for galleries to 1536px, add padding
 section.gallery {

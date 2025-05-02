@@ -43,11 +43,21 @@
         <img class="lazyload" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}"
           data-src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" />
       </figure>
+      {{ if $image.Exif }}
       <span class="pswp-caption-content">
-        {{ with .Title }}{{ . }}<br />
+        {{ with .Title }}{{ . }}<br />{{ end }}
+        {{ with $image.Exif.Tags }}
+        {{ if .Model }}{{ .Make }} {{ .Model }} &middot; {{ end }}
+        {{ with .FocalLength }}{{ . }}mm &middot; {{ end }}
+        {{ with .ApertureValue }}f/{{ div (math.Round (mul (float .) 10)) 10 }}{{ end }}
+        {{ with .ExposureTime }}{{ . }}s &middot; {{ end }}
+        {{ with .ISO }}ISO {{ . }} &middot; {{ end }}
+        {{ end }}
+        {{ with .Title }}
         <hr />{{ end }}
         {{ with .Date }}{{ . | time.Format ":date_short" }}{{ end }}
       </span>
+      {{ end }}
       <meta itemprop="contentUrl"
         content="{{ if $publishResources }}{{ $image.RelPermalink }}{{ else }}{{ $full.RelPermalink }}{{ end }}" />
       {{ with site.Params.Author }}

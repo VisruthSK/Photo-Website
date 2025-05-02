@@ -39,7 +39,7 @@ resampleFilter = "CatmullRom"
 [imaging.exif]
 disableDate = false
 disableLatLong = true
-includeFields = "ImageDescription|Orientation"
+# includeFields = "ImageDescription|Orientation"
 
 [services]
 [services.rss]
