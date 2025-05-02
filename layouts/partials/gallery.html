@@ -47,15 +47,23 @@
       <span class="pswp-caption-content">
         {{ with .Title }}{{ . }}<br />{{ end }}
         {{ with $image.Exif.Tags }}
-        {{ if .Model }}{{ .Make }} {{ .Model }} &middot; {{ end }}
-        {{ with .FocalLength }}{{ . }}mm &middot; {{ end }}
-        {{ with .ApertureValue }}f/{{ div (math.Round (mul (float .) 10)) 10 }}{{ end }}
+        {{ if .Model }}{{ .Make }} {{ .Model }} {{ end }}
+        {{ with .LensModel }} with {{ . }}{{ end }} </br>
+        <!-- {{ printf "%#v" $image.Exif.Tags }} -->
+
+        {{ if .FocalLengthIn35mmFormat }}
+        {{ math.Round (float .FocalLengthIn35mmFormat) }}mm (35mm eq) &middot;
+        {{ else if .FocalLength }}
+        {{ div (math.Round (mul (float .FocalLength) 10)) 10.0 }}mm &middot;
+        {{ end }}
+        {{ with .ApertureValue }}f/{{ div (math.Round (mul (float .) 10)) 10.0 }} &middot; {{ end }}
         {{ with .ExposureTime }}{{ . }}s &middot; {{ end }}
-        {{ with .ISO }}ISO {{ . }} &middot; {{ end }}
+        {{ with .ISO }}ISO {{ . }} {{ end }}
         {{ end }}
         {{ with .Title }}
-        <hr />{{ end }}
-        {{ with .Date }}{{ . | time.Format ":date_short" }}{{ end }}
+        <hr />{{ end }}</br>
+
+        {{ with .Date }}{{ . | time.Format "2006.01.02 15:04" }}{{ end }}
       </span>
       {{ end }}
       <meta itemprop="contentUrl"
