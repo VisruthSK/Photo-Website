@@ -1,0 +1,46 @@
+copyright = "© Visruth Srimath Kandali"
+defaultContentLanguage = "en"
+disableKinds = ["taxonomy"]
+enableRobotsTXT = true
+languageCode = "en"
+timeZone = "America/Los_Angeles"
+timeout = "120s"
+title = "Visruth's Photo Memoir"
+theme = 'gallery'
+
+[params]
+defaultTheme = "dark"
+description = "Miscellaneous Photos"
+title = "Photo memoir"
+showDate = 'Yes'
+
+[params.author]
+email = "public@visruth.com"
+name = "Visruth Srimath Kandali"
+
+[params.socialIcons]
+email = "mailto:public@visruth.com"
+website = "https://visruth.com"
+
+[params.gallery]
+#boxSpacing = 10
+#targetRowHeight = 288
+#targetRowHeightTolerance = 0.25
+
+[outputs]
+home = ["HTML", "RSS"]
+page = ["HTML"]
+section = ["HTML"]
+
+[imaging]
+quality = 80
+resampleFilter = "CatmullRom"
+
+[imaging.exif]
+disableDate = false
+disableLatLong = true
+includeFields = "ImageDescription|Orientation"
+
+[services]
+[services.rss]
+limit = 100
