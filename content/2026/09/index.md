@@ -1,5 +1,5 @@
 ---
-date: 2025-09-01
+date: 2026-09-01
 title: September
 sort_by: Date
 # resources:
