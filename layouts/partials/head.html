@@ -33,6 +33,19 @@
     "enableDownload" (default true .Params.build.publishResources)
     }}
     {{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true "params" $params) | resources.Fingerprint }}
+    <script>
+        if (window.trustedTypes && window.trustedTypes.createPolicy) {
+            try {
+                window.trustedTypes.createPolicy('default', {
+                    createHTML: (value) => value,
+                    createScript: (value) => value,
+                    createScriptURL: (value) => value
+                });
+            } catch (e) {
+                // The policy may already be defined by another script.
+            }
+        }
+    </script>
     <script src="{{ $js.RelPermalink }}" defer></script>
     {{- partial "head-custom.html" . -}}
 </head>

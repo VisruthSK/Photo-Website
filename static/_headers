@@ -4,5 +4,6 @@
   Cache-Control: max-age=31536000, public
   X-Frame-Options: deny
   Referrer-Policy: no-referrer
-  Feature-Policy: microphone 'none'; payment 'none'; geolocation 'none'; midi 'none'; sync-xhr 'none'; camera 'none'; magnetometer 'none'; gyroscope 'none'
-  Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; upgrade-insecure-requests;
+  Permissions-Policy: microphone=(), payment=(), geolocation=(), camera=(), magnetometer=(), gyroscope=()
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; require-trusted-types-for 'script'; trusted-types default; upgrade-insecure-requests;
