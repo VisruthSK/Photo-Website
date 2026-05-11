@@ -1,5 +1,5 @@
 ---
-title: Photo Portfolio
+title: Portfolio
 menus: "main"
 params:
   featured: true
