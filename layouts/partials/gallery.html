@@ -4,9 +4,9 @@
     {{ range $image := where (.Resources.ByType "image") "Params.hidden" "ne" true }}
     {{ $title := "" }}
     {{ $date := "" }}
-    {{ with $image.Exif }}
+    {{ with $image.Meta }}
     {{ $date = .Date }}
-    {{ with .Tags.ImageDescription }}
+    {{ with .Exif.ImageDescription }}
     {{/* Title from EXIF ImageDescription */}}
     {{ $title = . }}
     {{ end }}
@@ -32,7 +32,7 @@
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
     {{ $image := .image }}
     {{ $thumbnail := $image.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
-    {{ $full := $image.Filter (slice images.AutoOrient (images.Process "fit 1600x1600")) }}
+    {{ $full := $image.Filter (slice images.AutoOrient (images.Process "fit 2048x2048")) }}
     {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
     <a class="gallery-item"
       href="{{ if $publishResources }}{{ $image.RelPermalink }}{{ else }}{{ $full.RelPermalink }}{{ end }}"
@@ -43,25 +43,17 @@
         <img class="lazyload" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}"
           data-src="{{ $thumbnail.RelPermalink }}" alt="{{ .Title }}" />
       </figure>
-      {{ if $image.Exif }}
+      {{ if $image.Meta }}
       <span class="pswp-caption-content">
         {{ with .Title }}{{ . }}<br />{{ end }}
-        {{ with $image.Exif.Tags }}
-        {{ if .Model }}{{ .Make }} {{ .Model }} {{ end }}
-        {{ with .LensModel }} with {{ . }}{{ end }} </br>
-        <!-- {{ printf "%#v" $image.Exif.Tags }} -->
+        {{ with $image.Meta.Exif }}
+        {{ if .Model }}{{ .Make }} {{ .Model }}{{ end }}{{ with .LensModel }} with {{ . }}{{ end }}<br />
+        <!-- {{ printf "%#v" $image.Meta.Exif }} -->
 
-        {{ if .FocalLengthIn35mmFormat }}
-        {{ math.Round (float .FocalLengthIn35mmFormat) }}mm (35mm eq) &middot;
-        {{ else if .FocalLength }}
-        {{ div (math.Round (mul (float .FocalLength) 10)) 10.0 }}mm &middot;
-        {{ end }}
-        {{ with .ApertureValue }}f/{{ div (math.Round (mul (float .) 10)) 10.0 }} &middot; {{ end }}
-        {{ with .ExposureTime }}{{ . }}s &middot; {{ end }}
-        {{ with .ISO }}ISO {{ . }} {{ end }}
+        {{ if .FocalLengthIn35mmFormat }}{{ math.Round (float .FocalLengthIn35mmFormat) }}mm (35mm eq) &middot; {{ else if .FocalLength }}{{ div (math.Round (mul (float .FocalLength) 10)) 10.0 }}mm &middot; {{ end }}{{ with .ApertureValue }}f/{{ div (math.Round (mul (float .) 10)) 10.0 }} &middot; {{ end }}{{ with .ExposureTime }}{{ . }}s &middot; {{ end }}{{ with .ISO }}ISO {{ . }}{{ end }}
         {{ end }}
         {{ with .Title }}
-        <hr />{{ end }}</br>
+        <hr />{{ end }}<br />
 
         {{ with .Date }}{{ . | time.Format "2006.01.02 15:04" }}{{ end }}
       </span>

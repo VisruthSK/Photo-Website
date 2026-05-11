@@ -14,3 +14,4 @@ I tend to shoot pedestrian things; flowers, street signs, various happenings (or
 Photos mostly shot with a Fuji XT-5 + XF 33 1.4--see EXIF. Almost all photos are SOOC because I am lazy.
 
 Email if you want high quality files; uploads are extremely compressed (~100x smaller.)
+

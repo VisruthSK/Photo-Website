@@ -3,7 +3,6 @@ copyright = "© Visruth Srimath Kandali"
 defaultContentLanguage = "en"
 disableKinds = ["taxonomy"]
 enableRobotsTXT = true
-languageCode = "en"
 timeZone = "America/Los_Angeles"
 timeout = "120s"
 title = "Visruth's Photo Memoir"
@@ -42,6 +41,12 @@ disableDate = false
 disableLatLong = true
 # includeFields = "ImageDescription|Orientation"
 
+[imaging.meta]
+sources = ["exif"]
+
 [services]
 [services.rss]
 limit = 100
+
+[languages.en]
+locale = "en"
