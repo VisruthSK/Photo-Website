@@ -1,7 +1,7 @@
 ---
 title: Favourite Shots
 params:
-  featured: true
+  featured: false 
   private: true
 sort_by: Date
 resources:
