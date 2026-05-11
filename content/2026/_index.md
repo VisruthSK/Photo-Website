@@ -1,6 +1,0 @@
----
-title: "2026"
-weight: 1
-menus: "main"
----
-
