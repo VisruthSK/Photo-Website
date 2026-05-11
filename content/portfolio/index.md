@@ -1,5 +1,6 @@
 ---
 title: Photo Portfolio
+menus: "main"
 params:
   featured: true
   private: true 

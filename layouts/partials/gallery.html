@@ -47,7 +47,7 @@
       <span class="pswp-caption-content">
         {{ with .Title }}{{ . }}<br />{{ end }}
         {{ with $image.Meta.Exif }}
-        {{ if .Model }}{{ .Make }} {{ .Model }}{{ end }}{{ with .LensModel }} with {{ . }}{{ end }}<br />
+        {{ if .Model }}{{ .Make }} {{ .Model }}{{ end }}{{ with .LensModel }} with {{ replace . "mmF" "mm F" }}{{ end }}<br />
         <!-- {{ printf "%#v" $image.Meta.Exif }} -->
 
         {{ if .FocalLengthIn35mmFormat }}{{ math.Round (float .FocalLengthIn35mmFormat) }}mm (35mm eq) &middot; {{ else if .FocalLength }}{{ div (math.Round (mul (float .FocalLength) 10)) 10.0 }}mm &middot; {{ end }}{{ with .ApertureValue }}f/{{ div (math.Round (mul (float .) 10)) 10.0 }} &middot; {{ end }}{{ with .ExposureTime }}{{ . }}s &middot; {{ end }}{{ with .ISO }}ISO {{ . }}{{ end }}
