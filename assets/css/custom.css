@@ -15,6 +15,30 @@
   --surface-1-dark: #0a0a0a;
 }
 
+@font-face {
+  font-family: "Valley Sans";
+  src: url("/fonts/ValleySans[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Valley Sans";
+  src: url("/fonts/ValleySans-Italic[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+html {
+  font-family:
+    "Valley Sans",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
 /* Set maximum width for galleries to 1536px, add padding
 section.gallery {
   max-width: 1536px;
