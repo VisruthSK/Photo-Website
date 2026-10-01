@@ -5,6 +5,6 @@
     "dev": "hugo server"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "github:tschaub/gh-pages#main"
   }
 }

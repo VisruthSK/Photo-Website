@@ -1,9 +1,9 @@
 ---
-date: 2026-09-01
-title: September
+date: 2026-07-01
+title: Brisbane
 sort_by: Date
 resources:
-  - src: DSCF1556.JPG
+  - src: DSCF0631.JPG
     params:
       cover: true
 ---
